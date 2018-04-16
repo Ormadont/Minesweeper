@@ -1,19 +1,37 @@
-const printBoard = board => {
-  console.log('Current Board');
-  console.log(board[0].join(' | '));
-  console.log(board[1].join(' | '));
-  console.log(board[2].join(' | '));
+const generatePlyaerBoard = (numberOfRows, numberOfColumns) => {
+  const board = []; //overall game board
+  for (let i = 0; i < numberOfRows; i++) {
+    const row = []; //a single row to be added to game board
+    for (let j = 0; j < numberOfColumns; j++) {
+      row.push(' ');
+    }
+    board.push(row);
+  }
+  return board;
 };
-const board = [
-  [' ', ' ', ' '],
-  [' ', ' ', ' '],
-  [' ', ' ', ' ']
-];
 
-printBoard(board);
-board[0][1] = '1';
-board[2][2] = 'B';
-printBoard(board);
+const generateBombBoard = (numberOfRows, numberOfColumns, numberofBombs) => {
 
+  const board = []; //overall game board
+  for (let i = 0; i < numberOfRows; i++) {
+    const row = []; //a single row to be added to game board
+    for (let j = 0; j < numberOfColumns; j++) {
+      row.push(null);
+    }
+    board.push(row);
+  }
 
-console.log('Program complete');
+  let numberofBombsPlaced = 0;
+  while (numberofBombsPlaced != numberofBombs) {
+    let randomRowIndex = Math.floor(Math.random()*numberOfRows);
+    let randomColumnIndex = Math.floor(Math.random()*numberOfColumns);
+    if (board[randomRowIndex][randomColumnIndex] != 'B') {
+      board[randomRowIndex][randomColumnIndex] = 'B';
+      numberofBombsPlaced++;
+    }
+  }
+
+  return board;
+}
+
+console.log(generateBombBoard(2,2,3));
