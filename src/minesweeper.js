@@ -11,7 +11,6 @@ const generatePlyaerBoard = (numberOfRows, numberOfColumns) => {
 };
 
 const generateBombBoard = (numberOfRows, numberOfColumns, numberofBombs) => {
-
   const board = []; //overall game board
   for (let i = 0; i < numberOfRows; i++) {
     const row = []; //a single row to be added to game board
@@ -20,7 +19,6 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberofBombs) => {
     }
     board.push(row);
   }
-
   let numberofBombsPlaced = 0;
   while (numberofBombsPlaced != numberofBombs) {
     let randomRowIndex = Math.floor(Math.random()*numberOfRows);
@@ -30,8 +28,17 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberofBombs) => {
       numberofBombsPlaced++;
     }
   }
-
   return board;
 }
 
-console.log(generateBombBoard(2,2,3));
+const printBoard = board => console.log(board.map(row => row.join(' | ')).join('\n'));
+
+let rows = 3; let columns = 4;
+let playerBoard = generatePlyaerBoard(rows, columns);
+let bombBoard = generateBombBoard(rows, columns, 5);
+
+console.log("Player board: ");
+printBoard(playerBoard);
+
+console.log("Bomb board: ");
+printBoard(bombBoard);
