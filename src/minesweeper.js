@@ -1,3 +1,11 @@
+class Game {
+  constructor(numberOfRows, numberOfColumns, _numberOfBombs) {
+    this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
+  }
+  
+}
+
+
 class Board {
   //start class
 
@@ -51,38 +59,40 @@ class Board {
     console.log(this._playerBoard.map(row => row.join(' | ')).join('\n'));
   };
 
+  static generatePlayerBoard(numberOfRows, numberOfColumns) {
+    const board = [];
+    for (let i = 0; i < numberOfRows; i++) {
+      const row = [];
+      for (let j = 0; j < numberOfColumns; j++) {
+        row.push(' ');
+      }
+      board.push(row);
+    }
+    return board;
+  };
+
+  static generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs) {
+    const board = [];
+    for (let i = 0; i < numberOfRows; i++) {
+      const row = [];
+      for (let j = 0; j < numberOfColumns; j++) {
+        row.push(null);
+      }
+      board.push(row);
+    }
+    let numberOfBombsPlaced = 0;
+    while (numberOfBombsPlaced != numberOfBombs) {
+      let randomRowIndex = Math.floor(Math.random()*numberOfRows);
+      let randomColumnIndex = Math.floor(Math.random()*numberOfColumns);
+      if (board[randomRowIndex][randomColumnIndex] != 'B') {
+        board[randomRowIndex][randomColumnIndex] = 'B';
+        numberOfBombsPlaced++;
+      }
+    }
+    return board;
+  };
+
+
+
   //end of class
-}
-
-const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
-  const board = [];
-  for (let i = 0; i < numberOfRows; i++) {
-    const row = [];
-    for (let j = 0; j < numberOfColumns; j++) {
-      row.push(' ');
-    }
-    board.push(row);
-  }
-  return board;
-};
-
-const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
-  const board = [];
-  for (let i = 0; i < numberOfRows; i++) {
-    const row = [];
-    for (let j = 0; j < numberOfColumns; j++) {
-      row.push(null);
-    }
-    board.push(row);
-  }
-  let numberOfBombsPlaced = 0;
-  while (numberOfBombsPlaced != numberOfBombs) {
-    let randomRowIndex = Math.floor(Math.random()*numberOfRows);
-    let randomColumnIndex = Math.floor(Math.random()*numberOfColumns);
-    if (board[randomRowIndex][randomColumnIndex] != 'B') {
-      board[randomRowIndex][randomColumnIndex] = 'B';
-      numberOfBombsPlaced++;
-    }
-  }
-  return board;
 }
