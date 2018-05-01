@@ -1,0 +1,27 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "It's result of learning in Codecademy.",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ormadont/Minesweeper.git"
+  },
+  "keywords": [
+    "game"
+  ],
+  "author": "Evgeniy Demyanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ormadont/Minesweeper/issues"
+  },
+  "homepage": "https://github.com/Ormadont/Minesweeper#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
