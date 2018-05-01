@@ -8,7 +8,8 @@
 // game.playMove(1, 2);
 // When done run `.exit`
 
-import Board from './board';
+// import Board from './board';
+const Board = require('./board');
 
 class Game {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {

@@ -1,4 +1,4 @@
-export default Board;
+// export default Board;
 
 class Board {
   //start class
@@ -89,3 +89,5 @@ class Board {
 
   //end of class
 }
+
+module.exports = Board;
